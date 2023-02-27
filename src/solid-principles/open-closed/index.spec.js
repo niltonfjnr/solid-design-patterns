@@ -14,7 +14,7 @@ const makeMock = () => {
 const makeSut = () => new ProductFilter();
 const functionsReference = makeSut();
 
-describe(functionsReference.name, () => {
+describe(ProductFilter.name, () => {
     describe(functionsReference.filterBySpecification.name, () => {
         test(`GIVEN a defined set os products WHEN filtered by ${COLORS.GREEN} THEN should return a list with this color`, () => {
             const sut = makeSut();
