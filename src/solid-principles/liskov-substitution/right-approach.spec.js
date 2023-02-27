@@ -36,12 +36,14 @@ describe(Quadrilateral.name, () => {
             
             rectangle.width = mockWidthValue;
             rectangle.heigth = mockHeigthValue;
+            const wasSquare = square.isSquare();
             square.width = mockWidthValue;
             square.heigth = mockHeigthValue;
 
             expect(rectangle.area).toBe(mockResult);
             expect(rectangle.isSquare()).toBe(false);
             expect(square.area).toBe(mockResult);
+            expect(wasSquare).toBe(true);
             expect(square.isSquare()).toBe(false);
         });
     });
