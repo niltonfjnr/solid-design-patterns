@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint **/*.js",
     "test": "npm run tests-with-jest",
-    "tests-with-jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "tests-with-jest": "node --experimental-vm-modules --trace-warnings node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
