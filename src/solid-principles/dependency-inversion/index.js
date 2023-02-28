@@ -5,7 +5,8 @@ import { FilterRelationshipData } from './data/filter-relationship-data';
 import { GetRelationshipData } from './data/get-relationship-data';
 import { RelationshipData } from './data/relationship-data';
 
-// HIGH-LEVEL MODULE
+// MAIN-LEVEL MODULE
+// TRY TO TURN A LOW LEVEL MODULE INTO A HIGH ONE SO IMPLEMENTATIONS ARE SEGREGATED AND AFFECT LAYER SHOLLOWER AS POSSIBLE
 class RelationshipManager {
     /**
      * @param {RelationshipData} relationshipData 
