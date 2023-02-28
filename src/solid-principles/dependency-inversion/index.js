@@ -1,71 +1,41 @@
-import { RELATIONSHIP } from './constants';
+import { Person } from './domain/person-model';
 
-class Person {
-    /**
-     * @param {string} name
-     */
-    constructor(name) {
-        this.name = name;
-    }
-}
+import { AddRelationshipData } from './data/add-relationship-data';
+import { FilterRelationshipData } from './data/filter-relationship-data';
+import { GetRelationshipData } from './data/get-relationship-data';
+import { RelationshipData } from './data/relationship-data';
 
-class Relationship {
-    /**
-     * @param {Person} from 
-     * @param {string} type 
-     * @param {Person} to 
-     */
-    constructor(from, type, to) {
-        this.from = from;
-        this.type = type;
-        this.to = to;
-    }
-}
-
+// HIGH-LEVEL MODULE
 class RelationshipManager {
     /**
-     * @param {Relationship[]} relationships 
+     * @param {RelationshipData} relationshipData 
      */
-    constructor(relationships = []) {
-        this.relationships = relationships;
+    constructor(relationshipData = new RelationshipData()) {
+        this.relationshipData = relationshipData;
+        this.addRelationshipData = new AddRelationshipData();
+        this.filterRelationshipData = new FilterRelationshipData();
+        this.getRelationshipData = new GetRelationshipData();
+    }
+
+    get relationships() {
+        return this.getRelationshipData.get(this.relationshipData);
     }
 
     /**
      * @param {Person} parent 
      * @param {Person} child 
      */
-    add(parent, child) {
-        this.relationships.push(
-            new Relationship(parent, RELATIONSHIP.PARENT, child)
-        );
-    }
-}
-
-// HIGH-LEVEL MODULE
-class Research {
-    /**
-     * @param {Relationship[]} relationships 
-     */
-    constructor(relationships) {
-        this.relationships = relationships;
+    addParentChildRelation(parent, child) {
+        this.addRelationshipData.add(this.relationshipData, parent, child);
     }
     /**
-     * @param {string} value
+     * @param {string} parentName
      */
-    findAllChildrenOf(value) {
-        /**
-         * @param {Relationship} relationship 
-         * @param {string} name
-         */
-        const filterImplementation = (relationship, name) => (
-            relationship.from.name === name && relationship.type === RELATIONSHIP.PARENT
-        );
-        return this.relationships.filter(relationship => filterImplementation(relationship, value));
+    findAllChildrenOf(parentName) {
+        return this.filterRelationshipData.filter(this.relationshipData, parentName);
     }
 }
 
 export {
-    Person,
     RelationshipManager,
-    Research,
 };
