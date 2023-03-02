@@ -21,7 +21,15 @@
     - Deal with the creation (construction) of objects
     - Explicit (constructor) vs. implicit (DI, reflection, etc.)
     - Wholesale (single statement) vs. piecewise (step-by-step)
-    
+        # 1. BUILDER
+        - Some objects are simple and can be created in a single initializer call
+        - Other objects require a lot of ceremony to create
+        - Having an object with 10 initializer arguments is not productive
+        - Instead, opt for piecewise construction
+        - Builder provides an API for constructing an object step-by-step
+        - When piecewise object construction is complicated, provide an API for doing it succintly
+
+
 * STRUCTURAL
     - Concerned with the structure (e.g., class members)
     - Many patterns are wrappers that mimic the underlyig class interface
