@@ -21,13 +21,36 @@
     - Deal with the creation (construction) of objects
     - Explicit (constructor) vs. implicit (DI, reflection, etc.)
     - Wholesale (single statement) vs. piecewise (step-by-step)
-        # 1. BUILDER
+
+        # 1. BUILDER | BUILDER FACETS (INNER/NESTED)
+        __When piecewise object construction is complicated, provide an API for doing it succintly__
+        ### Motivation
         - Some objects are simple and can be created in a single initializer call
         - Other objects require a lot of ceremony to create
         - Having an object with 10 initializer arguments is not productive
         - Instead, opt for piecewise construction
         - Builder provides an API for constructing an object step-by-step
-        - When piecewise object construction is complicated, provide an API for doing it succintly
+        
+        ### Summary
+        - A builder is a separate component for building an object
+        - Can either give builder an initializer or return it via a static function
+        - To make builder fluent, return self
+        - Different facets of an object can be built with different builders working in tandem via a base class
+        <br>&nbsp;
+
+        # 2. FACTORY | FACTORY METHOD | ABSTRACT FACTORY
+        __A component responsible solely for the wholesale (not piecewise) creation of objects__
+        ### Motivation
+        - Object creation logic becomes too convoluted
+        - Initializer is not descriptive
+            - Name is always \__init__
+            - Cannot overload with same set of arguments with different names
+            - Can turn into "optional parameter hell"
+        - Wholesale object creation (non-piecewise, unlike Builder) can be outsourced to
+            - A reparated method (Factory Method)
+            - That may exist in a reparate class (Factory)
+            - Can create hierarchy of factories with Abstract Factory
+
 
 
 * STRUCTURAL
