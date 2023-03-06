@@ -50,8 +50,19 @@
             - A reparated method (Factory Method)
             - That may exist in a reparate class (Factory)
             - Can create hierarchy of factories with Abstract Factory
+        <br>&nbsp;
 
+        # 3. PROTOTYPE
+        __OK__
+        ### Motivation
+        - OK
+        <br>&nbsp;
 
+        # 4. OK
+        __OK__
+        ### Motivation
+        - OK
+        <br>&nbsp;
 
 * STRUCTURAL
     - Concerned with the structure (e.g., class members)
